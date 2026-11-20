@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9eff5">
+  <meta name="description" content="Calcule as quantidades dos ingredientes das massas branca e de chocolate da Paty.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script defer src="recipes.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="catalog.js"></script>
+  <script defer src="admin-business.js"></script>
+  <script defer src="admin-store.js"></script>
+  <script defer src="admin-ui.js"></script>
+  <title>Cookies Paty | Gestão</title>
+</head>
+<body>
+  <header class="masthead">
+    <div class="container masthead-content">
+      <img class="brand" src="assets/logo.png" alt="Paty Cookies Caseiros" width="66" height="66">
+      <p class="eyebrow">Caderno de receitas</p>
+      <p class="connection" id="connection" hidden></p>
+    </div>
+  </header>
+  <div class="admin-toolbar"><nav class="container admin-nav" id="admin-nav" aria-label="Navegação principal"></nav></div>
+  <p class="admin-notice" id="admin-notice" role="status" hidden></p>
+  <main class="container admin-workspace" id="workspace" hidden></main>
+  <main class="container layout" id="calculator">
+    <section class="setup" aria-labelledby="page-title">
+      <h1 id="page-title">Calculadora<br>de receitas</h1>
+      <p class="intro">Escolha a massa e a porção.</p>
+      <fieldset>
+        <legend>Massa</legend>
+        <div class="segments flavors">
+          <label><input type="radio" name="massa" value="branca" checked><span><i class="swatch swatch-white" aria-hidden="true"></i>Branca</span></label>
+          <label><input type="radio" name="massa" value="chocolate"><span><i class="swatch swatch-dark" aria-hidden="true"></i>Chocolate</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Porção</legend>
+        <div class="segments portions">
+          <label><input type="radio" name="porcao" value="0.5" checked><span><strong>½</strong>Meia</span></label>
+          <label><input type="radio" name="porcao" value="1"><span><strong>1</strong>Inteira</span></label>
+          <label><input type="radio" name="porcao" value="2"><span><strong>2</strong>Dobrada</span></label>
+        </div>
+      </fieldset>
+      <div class="add-in">
+        <label for="adicional">Gotas de chocolate</label>
+        <select id="adicional">
+          <option value="nenhum">Sem gotas</option>
+          <option value="leite">Ao leite</option>
+          <option value="meio-amargo">Meio amargo</option>
+          <option value="branco">Branco</option>
+        </select>
+      </div>
+    </section>
+    <section class="ingredients" aria-labelledby="ingredients-title">
+      <div class="card-head">
+        <div>
+          <h2 id="ingredients-title">Ingredientes</h2>
+          <p id="recipe-summary" aria-live="polite"></p>
+        </div>
+        <button id="clear" type="button" disabled>Desmarcar</button>
+      </div>
+      <ul id="ingredient-list" class="ingredient-list"></ul>
+      <p class="card-foot" id="progress" aria-live="polite"></p>
+      <noscript>Ative o JavaScript para calcular as quantidades.</noscript>
+    </section>
+    <details class="preparation">
+      <summary>Modo de preparo</summary>
+      <ol id="steps"></ol>
+    </details>
+    <footer class="footer">
+      <details id="install">
+        <summary>Instalar no iPhone</summary>
+        <p>Abra a versão HTTPS no Safari. Use Compartilhar, Adicionar à Tela de Início e Abrir como App. Abra pelo ícone com internet e espere aparecer “Pronto para offline”.</p>
+      </details>
+    </footer>
+  </main>
+</body>
+</html>

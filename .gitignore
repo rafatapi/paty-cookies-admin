@@ -1,0 +1,7 @@
+/dados/
+/dist/
+/.openai/
+*.xlsx
+*.xls
+*.xlsm
+Cookies-Paty-backup-*.json

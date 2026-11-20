@@ -1,0 +1,182 @@
+:root {
+  color-scheme: light;
+  --ink: #31242e;
+  --muted: #6d5367;
+  --berry: #81216f;
+  --berry-dark: #651755;
+  --blush: #f9eff5;
+  --tint: #f5e3f0;
+  --line: #eadbe5;
+  --paper: #fffdfd;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--blush);
+  color: var(--ink);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+[hidden] { display: none !important; }
+button, select, input { font: inherit; }
+button, label, select, summary { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, select:focus-visible, summary:focus-visible, input:focus-visible {
+  outline: 3px solid var(--berry);
+  outline-offset: 3px;
+}
+.container {
+  width: min(100%, 72rem);
+  padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right));
+  margin-inline: auto;
+}
+.masthead {
+  padding-top: env(safe-area-inset-top);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.masthead-content {
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.brand { flex: none; object-fit: contain; }
+.eyebrow { color: var(--berry-dark); font-weight: 650; margin: 0; }
+.connection {
+  margin: 0 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  padding: .35rem .65rem;
+  color: var(--muted);
+  font-size: .875rem;
+  text-align: center;
+}
+.connection.ready { border-color: #e7cee1; background: var(--blush); color: var(--berry-dark); }
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.38fr);
+  grid-template-areas: "setup ingredients" "prep ingredients" "footer footer";
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
+  gap: 1.125rem clamp(2.5rem, 6vw, 5.5rem);
+  padding-block: clamp(2rem, 5vw, 4.25rem) max(1.25rem, env(safe-area-inset-bottom));
+}
+.setup { grid-area: setup; }
+h1, h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+h1 { color: var(--berry-dark); font-size: clamp(3rem, 5.9vw, 5.35rem); line-height: .99; }
+.intro { margin: .9rem 0 1.65rem; color: var(--muted); }
+fieldset { border: 0; padding: 0; min-inline-size: 0; margin: 0 0 1.125rem; }
+legend, .add-in > label { font-weight: 700; margin-bottom: .55rem; padding: 0; }
+.segments { display: grid; gap: .5rem; }
+.flavors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.segments label { position: relative; min-width: 0; cursor: pointer; }
+.segments input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.segments span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 3rem;
+  padding: .375rem;
+  border: 1px solid #e4cedd;
+  border-radius: .68rem;
+  background: var(--paper);
+  font-size: .9375rem;
+  font-weight: 600;
+}
+.segments input:checked + span {
+  background: var(--tint);
+  color: var(--berry-dark);
+  border-color: var(--berry);
+  box-shadow: inset 0 0 0 1px var(--berry);
+}
+.segments input:focus-visible + span { outline: 3px solid var(--berry); outline-offset: 3px; }
+.swatch { width: .85rem; height: .85rem; border-radius: 50%; flex: none; }
+.swatch-white { background: #f6daad; border: 1px solid #a66a40; }
+.swatch-dark { background: #653e34; }
+.portions strong { font-size: 1.1rem; }
+.add-in { display: grid; }
+.add-in select {
+  appearance: none;
+  padding: .7rem 2.5rem .7rem .85rem;
+  min-height: 3rem;
+  border: 1px solid #e4cedd;
+  border-radius: .68rem;
+  background: linear-gradient(45deg, transparent 50%, var(--berry) 50%) right 1.2rem center / .35rem .35rem no-repeat,
+    linear-gradient(135deg, var(--berry) 50%, transparent 50%) right .85rem center / .35rem .35rem no-repeat,
+    var(--paper);
+  color: var(--ink);
+}
+.ingredients {
+  grid-area: ingredients;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 32px #6517550c;
+  overflow: hidden;
+}
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: 1.4rem 1.5rem 1.15rem; }
+h2 { color: var(--berry-dark); font-size: clamp(1.85rem, 3.8vw, 2.75rem); line-height: 1.04; }
+#recipe-summary { margin: .48rem 0 0; color: var(--muted); font-size: .9rem; }
+#clear {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--berry-dark);
+  border-radius: .6rem;
+  min-height: 2.75rem;
+  padding: .2rem .65rem;
+  font-weight: 650;
+  font-size: .875rem;
+  cursor: pointer;
+}
+#clear:disabled { color: #776671; cursor: default; }
+.ingredient-list { list-style: none; margin: 0; padding: 0 1.5rem; }
+.ingredient-list li { border-top: 1px solid var(--line); }
+.ingredient-list label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .8rem;
+  min-height: 3.1rem;
+  padding-block: .4rem;
+  cursor: pointer;
+}
+.ingredient-list input { appearance: auto; width: 1.2rem; height: 1.2rem; margin: 0; accent-color: var(--berry); }
+.ingredient-list input:checked + span { color: var(--muted); text-decoration: line-through; }
+.ingredient-list strong { color: var(--berry-dark); font-variant-numeric: tabular-nums; }
+.card-foot {
+  background: var(--tint);
+  color: var(--berry-dark);
+  padding: .76rem 1.5rem;
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 650;
+}
+.preparation {
+  grid-area: prep;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: .7rem;
+}
+.preparation summary { padding: .9rem; font-weight: 700; color: var(--berry-dark); cursor: pointer; }
+.preparation ol { margin: 0; padding: 0 1.05rem 1.05rem 2.25rem; line-height: 1.55; }
+.preparation li + li { margin-top: .45rem; }
+.footer { grid-area: footer; padding: .2rem 0; font-size: .9rem; color: var(--muted); }
+.footer summary { cursor: pointer; min-height: 2.75rem; align-content: center; }
+.footer p { margin: 0; line-height: 1.55; max-width: 38rem; }
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; grid-template-areas: "setup" "ingredients" "prep" "footer"; grid-template-rows: auto; }
+  .masthead-content { min-height: 4.5rem; gap: .7rem; }
+  .brand { width: 48px; height: 48px; }
+  .eyebrow { font-size: .875rem; }
+  .card-head { padding-inline: 1rem; }
+  .ingredient-list { padding-inline: 1rem; }
+  .card-foot { padding-inline: 1rem; }
+}
+@media (max-width: 380px) {
+  .connection { font-size: .75rem; padding: .3rem .45rem; }
+  .ingredient-list label { gap: .52rem; }
+}
