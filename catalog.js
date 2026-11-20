@@ -40,7 +40,7 @@ const patyCatalog = (() => {
   ];
 
   const products = flavors.map(([id, name, base, additions]) => ({
-    id, name, yield: base === 'branca' ? 26 : 20, price: null, overhead: 0,
+    id, name, yield: cookiesPerRecipe, price: null, overhead: 0,
     ingredients: [...scaleIngredients(base, 1, 'nenhum').map(item => [item.id, item.quantity]), ...additions],
     packaging: packaging.map(row => [...row]),
   }));

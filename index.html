@@ -32,21 +32,26 @@
   <main class="container layout" id="calculator">
     <section class="setup" aria-labelledby="page-title">
       <h1 id="page-title">Calculadora<br>de receitas</h1>
-      <p class="intro">Escolha a massa e a porção.</p>
-      <fieldset>
-        <legend>Massa</legend>
-        <div class="segments flavors">
-          <label><input type="radio" name="massa" value="branca" checked><span><i class="swatch swatch-white" aria-hidden="true"></i>Branca</span></label>
-          <label><input type="radio" name="massa" value="chocolate"><span><i class="swatch swatch-dark" aria-hidden="true"></i>Chocolate</span></label>
-        </div>
-      </fieldset>
+      <p class="intro">Escolha o tamanho do lote e quantos cookies de cada massa você quer.</p>
       <fieldset>
         <legend>Porção</legend>
         <div class="segments portions">
-          <label><input type="radio" name="porcao" value="0.5" checked><span><strong>½</strong>Meia</span></label>
-          <label><input type="radio" name="porcao" value="1"><span><strong>1</strong>Inteira</span></label>
-          <label><input type="radio" name="porcao" value="2"><span><strong>2</strong>Dobrada</span></label>
+          <label><input type="radio" name="porcao" value="0.5" checked><span><strong>½</strong>Meia · 13</span></label>
+          <label><input type="radio" name="porcao" value="1"><span><strong>1</strong>Inteira · 26</span></label>
+          <label><input type="radio" name="porcao" value="2"><span><strong>2</strong>Dobrada · 52</span></label>
         </div>
+      </fieldset>
+      <fieldset>
+        <legend>Cookies por massa</legend>
+        <div class="dough-counts">
+          <label for="white-count"><span><i class="swatch swatch-white" aria-hidden="true"></i>Branca</span>
+            <input type="number" id="white-count" data-dough="branca" inputmode="numeric" min="0" step="1" aria-describedby="cookie-total">
+          </label>
+          <label for="chocolate-count"><span><i class="swatch swatch-dark" aria-hidden="true"></i>Chocolate</span>
+            <input type="number" id="chocolate-count" data-dough="chocolate" inputmode="numeric" min="0" step="1" aria-describedby="cookie-total">
+          </label>
+        </div>
+        <p class="recipe-note" id="cookie-total"></p>
       </fieldset>
       <div class="add-in">
         <label for="adicional">Gotas de chocolate</label>
@@ -57,6 +62,18 @@
           <option value="branco">Branco</option>
         </select>
       </div>
+      <section class="dough-weight" aria-labelledby="weight-title">
+        <h2 id="weight-title">Peso de referência do lote</h2>
+        <p id="mass-reference"></p>
+        <p class="recipe-note">Referência de 1.295 g por receita completa. Tara da tigela: 295 g.</p>
+        <details>
+          <summary>Dividir a base na balança</summary>
+          <p class="recipe-note">Pese a tigela com a base já misturada, antes de adicionar farinha, chocolate em pó ou gotas.</p>
+          <label for="bowl-weight">Peso da tigela com a base (g)</label>
+          <input type="number" id="bowl-weight" inputmode="decimal" min="295.1" step="any">
+          <output id="base-split" for="bowl-weight white-count chocolate-count" aria-live="polite"></output>
+        </details>
+      </section>
     </section>
     <section class="ingredients" aria-labelledby="ingredients-title">
       <div class="card-head">
@@ -66,7 +83,7 @@
         </div>
         <button id="clear" type="button" disabled>Desmarcar</button>
       </div>
-      <ul id="ingredient-list" class="ingredient-list"></ul>
+      <div id="ingredient-list" class="ingredient-groups"></div>
       <p class="card-foot" id="progress" aria-live="polite"></p>
       <noscript>Ative o JavaScript para calcular as quantidades.</noscript>
     </section>

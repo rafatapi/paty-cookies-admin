@@ -1,8 +1,24 @@
 const patyStore = (() => {
   const initial = () => ({
-    version: 1, items: patyCatalog.items, products: patyCatalog.products,
+    version: 1, catalogRevision: 2, items: patyCatalog.items, products: patyCatalog.products,
     movements: [], batches: [], orders: [], cash: [],
   });
+
+  function updateCatalog(state) {
+    if (state.catalogRevision === 2) return state;
+    const defaults = new Map(patyCatalog.products.map(product => [product.id, product]));
+    for (const product of state.products) {
+      const original = defaults.get(product.id);
+      const ingredients = new Map(product.ingredients);
+      if (product.yield === 20 && original?.ingredients.some(([id]) => id === 'chocolate')
+        && ingredients.size === original.ingredients.length
+        && original.ingredients.every(([id, quantity]) => ingredients.get(id) === quantity)) {
+        product.yield = original.yield;
+      }
+    }
+    state.catalogRevision = 2;
+    return state;
+  }
 
   let opening;
   function database() {
@@ -32,10 +48,10 @@ const patyStore = (() => {
       let state;
       let businessError;
       request.onsuccess = () => {
-        state = request.result;
+        state = updateCatalog(request.result);
         if (!action) return;
         try {
-          state = action(state) ?? state;
+          state = updateCatalog(action(state) ?? state);
           store.put(state, 'state');
         } catch (error) {
           businessError = error;

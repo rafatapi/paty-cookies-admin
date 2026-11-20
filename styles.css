@@ -70,7 +70,6 @@ h1 { color: var(--berry-dark); font-size: clamp(3rem, 5.9vw, 5.35rem); line-heig
 fieldset { border: 0; padding: 0; min-inline-size: 0; margin: 0 0 1.125rem; }
 legend, .add-in > label { font-weight: 700; margin-bottom: .55rem; padding: 0; }
 .segments { display: grid; gap: .5rem; }
-.flavors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .portions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .segments label { position: relative; min-width: 0; cursor: pointer; }
 .segments input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
@@ -179,4 +178,38 @@ h2 { color: var(--berry-dark); font-size: clamp(1.85rem, 3.8vw, 2.75rem); line-h
 @media (max-width: 380px) {
   .connection { font-size: .75rem; padding: .3rem .45rem; }
   .ingredient-list label { gap: .52rem; }
+}
+.dough-counts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.dough-counts label { display: grid; gap: .35rem; font-weight: 650; }
+.dough-counts label span { display: flex; align-items: center; gap: .45rem; }
+.dough-counts input, #bowl-weight {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #e4cedd;
+  border-radius: .68rem;
+  background: var(--paper);
+  color: var(--ink);
+  padding: .5rem .8rem;
+  font-size: 1rem;
+}
+.portions span { flex-wrap: wrap; gap: .2rem .4rem; text-align: center; }
+.recipe-note { color: var(--muted); font-size: .875rem; line-height: 1.45; margin: .4rem 0 0; }
+.dough-weight { margin-top: 1.25rem; border: 1px solid #e4cedd; border-radius: .68rem; background: var(--paper); padding: .9rem 1rem; }
+.dough-weight h2 { font-family: inherit; font-weight: 700; font-size: 1rem; letter-spacing: normal; }
+#mass-reference { margin: .45rem 0 0; }
+.dough-weight details { margin-top: .65rem; }
+.dough-weight summary { cursor: pointer; font-weight: 650; }
+.dough-weight label { display: block; font-weight: 650; margin: .55rem 0 .35rem; }
+#base-split { display: block; font-weight: 650; margin-top: .4rem; }
+#base-split:empty { margin-top: 0; }
+.ingredient-groups h3 {
+  background: var(--tint);
+  color: var(--berry-dark);
+  font-size: .95rem;
+  margin: 0;
+  padding: .55rem 1.5rem;
+}
+.ingredient-groups .ingredient-list li:first-child { border-top: 0; }
+@media (max-width: 760px) {
+  .ingredient-groups h3 { padding-inline: 1rem; }
 }

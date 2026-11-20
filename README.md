@@ -13,6 +13,10 @@ Aplicação de gestão em HTML, CSS e JavaScript. Inclui calculadora de massas, 
 
 A quantidade em estoque é registrada em gramas, mililitros, metros ou unidades. O custo estimado usa o preço de referência da embalagem, atualizado ao registrar uma compra. Os custos de lotes anteriores são preservados. O saldo de caixa representa entradas menos saídas pagas no período e inclui compras de estoque.
 
+## Calculadora de massas
+
+Escolha 13, 26 ou 52 cookies no total. A quantidade da outra massa completa o lote automaticamente. Use 1, 2 ou 4 ovos na base comum e pese as porções antes de adicionar farinha ou chocolate em pó. Informe o peso da tigela com a base para descontar a tara de 295 g e calcular a divisão. A referência de 1.295 g por receita é informativa e não substitui a pesagem da base.
+
 ## Instalar no iPhone
 
 Sirva por HTTPS apenas os arquivos necessários à aplicação: `index.html`, `*.js`, `*.css`, `manifest.webmanifest` e `assets/`. Mantenha `dados/` fora da hospedagem porque contém a planilha e registros históricos com nomes de clientes. O acesso à versão hospedada deve ser compatível com a privacidade das fichas.
@@ -29,7 +33,7 @@ A planilha original fica em `dados/origem/cookie.xlsx`. Para incorporar a aba **
 
 - **Massa Branca** e **Massa Preta** fornecem a receita normalizada (coluna D). A calculadora mantém as porções meia, inteira e dobrada. Um quarto proporcional de massa branca usaria 168,75 g de farinha, enquanto M3 informa 141,25 g.
 - **Custos**, as abas de massas e **Embalagem** fornecem insumos, preços e embalagens de referência. O custo inicial de embalagem é R$ 0,244 por cookie. Preços antigos precisam ser conferidos antes de orçar.
-- **Plan2** serve de catálogo inicial com dez sabores. O rendimento inicial é de 26 para massa branca e 20 para chocolate, conforme as abas de massas. **Plan2** usa 26 também para chocolate. Para nozes e macadâmias, foram adotados 270 g da aba **Massa Branca** e 100 g de gotas. Para M&M's, a composição inicial segue **Plan2** com 200 g de confeitos e 200 g de gotas meio amargo. O doce de leite já está no cadastro de insumos e pode ser usado em uma nova ficha.
+- **Plan2** serve de catálogo inicial com dez sabores. O rendimento de referência passou a ser 26 cookies por receita para ambas as massas, conforme informado para a produção. Fichas de chocolate com a composição padrão e rendimento 20 são atualizadas. Rendimentos personalizados diferentes de 20 e consumos já registrados são preservados. Para nozes e macadâmias, foram adotados 270 g da aba **Massa Branca** e 100 g de gotas. Para M&M's, a composição inicial segue **Plan2** com 200 g de confeitos e 200 g de gotas meio amargo. O doce de leite já está no cadastro de insumos e pode ser usado em uma nova ficha.
 - **Estudo** e **200un** ficam como referências. **Produção** recalcula o consumo e a compra para qualquer quantidade usando o rendimento, o preço e o estoque cadastrados.
 
 Após alterar arquivos do app, incremente a versão do cache em `sw.js` para distribuir a atualização.

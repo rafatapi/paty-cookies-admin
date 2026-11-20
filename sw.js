@@ -1,6 +1,6 @@
 const scope = new URL(self.registration.scope);
 const cachePrefix = 'cookies-paty:' + scope.pathname + ':';
-const cacheName = cachePrefix + 'v3';
+const cacheName = cachePrefix + 'v4';
 const entry = new URL('index.html', scope).href;
 const assets = new Set([
   'index.html',
